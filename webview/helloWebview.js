@@ -14,10 +14,11 @@ module.exports = (text) => {
         <div>
         ${text}
         </div>
-        <button>click it</button>
+        <button id='btn_submit'>send msg</button>
     </body>
     <script>
         const box = document.getElementById('show-message')
+        const vscode = acquireVsCodeApi()
 
         // 监听消息
         window.addEventListener('message', event => {
@@ -29,6 +30,13 @@ module.exports = (text) => {
                     box.textContent = message.msg
                     break
             }
+        })
+
+        document.addEventListener('click', () => {
+            vscode.postMessage({
+                command: 'sendMessage',
+                msg: 'send successfully  from webview'
+            })
         })
     </script>
     </html>

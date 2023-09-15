@@ -61,7 +61,26 @@ function activate(context) {
 
     })
 
-    context.subscriptions.push(webViewCommand, webViewRefactorCommand);
+        // 注册新命令
+        const webViewReceiveCommand = vscode.commands.registerCommand('webview.receiveMessage', () => {
+            if(!currentPanel) return 
+    
+            // 接收 webview 消息
+            currentPanel.webview.onDidReceiveMessage(
+                message => {
+                    switch(message.command) {
+                        case 'sendMessage':
+                            vscode.window.showInformationMessage(message.msg)
+                            return 
+                    }
+                },
+                undefined,
+                context.subscriptions
+            )
+    
+        })
+
+    context.subscriptions.push(webViewCommand, webViewRefactorCommand, webViewReceiveCommand);
 }
 
 

@@ -2,7 +2,7 @@
   "name": "webview",
   "displayName": "webview",
   "description": "practice webview , good extension",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "publisher": "Marxu",
   "icon":"webview/img/RN_Webview.png",
   "engines": {
@@ -28,6 +28,11 @@
         "command": "webview.doRefactor",
         "title": "doRefactor a webview page",
         "category": "Hello Webview postMessage"
+      },
+      {
+        "command": "webview.receiveMessage",
+        "title": "receiveMessage a webview page",
+        "category": "Hello Webview receiveMessage"
       }
     ]
   },
